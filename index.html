@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Consulta CNPJ - AgroSeguro</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <h1>Consulta de CNPJ - Assistente AgroSeguro</h1>
+    <form method="post">
+        <label>Digite o CNPJ:</label>
+        <input type="text" name="cnpj" required>
+        <button type="submit">Consultar</button>
+    </form>
+
+    {% if resultado %}
+        {% if resultado.erro %}
+            <p style="color:red">{{ resultado.erro }}</p>
+        {% else %}
+            <h3>Resultado:</h3>
+            <p><strong>Empresa:</strong> {{ resultado.nome }}</p>
+            <p><strong>CNPJ:</strong> {{ resultado.cnpj }}</p>
+            <p><strong>Situação:</strong> {{ resultado.situacao }}</p>
+            <p><strong>CNAE:</strong> {{ resultado.cnae }} - {{ resultado.atividade_principal }}</p>
+            <p><strong>Endereço:</strong> {{ resultado.endereco }}</p>
+            {% if resultado.alerta %}
+                <p style="color:red"><strong>Alerta:</strong> {{ resultado.alerta }}</p>
+            {% endif %}
+        {% endif %}
+    {% endif %}
+
+    <br><a href="/historico">Ver histórico de consultas</a>
+</body>
+</html>

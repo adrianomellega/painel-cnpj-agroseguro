@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Histórico de Consultas</title>
+</head>
+<body>
+    <h1>Histórico de Consultas</h1>
+    <table border="1" cellpadding="5">
+        <tr>
+            <th>Data</th><th>CNPJ</th><th>Nome</th><th>Situação</th><th>CNAE</th><th>Alerta</th>
+        </tr>
+        {% for c in consultas %}
+        <tr>
+            <td>{{ c[8] }}</td><td>{{ c[1] }}</td><td>{{ c[2] }}</td><td>{{ c[3] }}</td><td>{{ c[4] }}</td><td>{{ c[7] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    <br><a href="/">Voltar</a>
+</body>
+</html>
